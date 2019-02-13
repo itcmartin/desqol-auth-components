@@ -56,4 +56,11 @@ class Profile extends React.Component {
   }
 }
 
+Profile.propTypes = {
+  onUpdate: PropTypes.func.isRequired
+};
+
+Profile.defaultProps = {
+};
+
 export default Profile;

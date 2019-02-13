@@ -74,4 +74,11 @@ class Registration extends React.Component {
   }
 }
 
+Registration.propTypes = {
+  onRegister: PropTypes.func.isRequired
+};
+
+Registration.defaultProps = {
+};
+
 export default Registration;

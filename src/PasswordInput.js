@@ -75,4 +75,13 @@ class PasswordInput extends React.Component {
   }
 }
 
+PasswordInput.propTypes = {
+  showConfirm: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
+PasswordInput.defaultProps = {
+  showConfirm: true
+};
+
 export default PasswordInput;

@@ -1,14 +1,15 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Registration from "./Registration";
+import Registration from './Registration';
 
-const API = "http://localhost:4000/api";
+const API = 'http://localhost:4000/api';
 
 const FETCH_CONFIG = {
-  mode: "cors",
-  cache: "no-cache",
+  mode: 'cors',
+  cache: 'no-cache',
   headers: {
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   }
 };
 
@@ -18,34 +19,44 @@ class WiredRegistration extends React.Component {
 
     this.state = {};
 
-    this.handleRegister = this.handleRegister.bind(this);
+    this.onRegister = this.onRegister.bind(this);
   }
 
-  handleRegister(e) {
-    //alert(JSON.stringify(e));
-
+  onRegister(e) {
     fetch(
-      API + "/registration",
+      API + '/registration',
       Object.assign(FETCH_CONFIG, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(e)
       })
     )
-      .then(response => {
-        if (response.status === 200) {
-          response.json().then(this.props.successHandler);
-        } else {
-          response.json().then(this.props.failureHandler);
-        }
-      })
-      .catch(error => {
-        this.props.errorHandler(error);
-      });
+    .then(response => {
+      if (response.status === 200) {
+        response.json().then(this.props.onSuccess);
+      } else {
+        response.json().then(this.props.onFailure);
+      }
+    })
+    .catch(error => {
+      this.props.onError(error);
+    });
   }
 
   render() {
-    return <Registration onRegister={this.handleRegister} />;
+    return <Registration onRegister={this.onRegister} />;
   }
 }
+
+WiredLogin.propTypes = {
+  onSuccess: PropTypes.func.isRequired,
+  onFailure: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired
+};
+
+WiredLogin.defaultProps = {
+  onError: e => {
+    alert('An error occurred:' + JSON.stringify(e));
+  }
+};
 
 export default WiredRegistration;

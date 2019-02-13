@@ -1,74 +1,74 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import EmailInput from "./EmailInput";
-import PasswordInput from "./PasswordInput";
-import DisplayNameInput from "./DisplayNameInput";
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
+import DisplayNameInput from './DisplayNameInput';
 
 class Registration extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      emailValue: "",
-      displayNameValue: "",
-      confirmedPasswordValue: ""
+      emailValue: '',
+      displayNameValue: '',
+      passwordValue: ''
     };
 
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onDisplayNameChange = this.onDisplayNameChange.bind(this);
-    this.onConfirmedPasswordChange = this.onConfirmedPasswordChange.bind(this);
-    this.handleRegister = this.handleRegister.bind(this);
+    this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onRegister = this.onRegister.bind(this);
   }
 
-  onEmailChange(e) {
+  onEmailChange(value) {
     this.setState({
-      emailValue: e.target.value
+      emailValue: value
     });
   }
 
-  onDisplayNameChange(e) {
+  onDisplayNameChange(value) {
     this.setState({
-      displayNameValue: e.target.value
+      displayNameValue: value
     });
   }
 
-  onConfirmedPasswordChange(password) {
+  onPasswordChange(password) {
     this.setState({
-      confirmedPasswordValue: password
+      passwordValue: password
     });
   }
 
-  handleRegister() {
+  onRegister() {
+    const {emailValue, passwordValue, displayNameValue} = this.state;
     this.props.onRegister({
-      email: this.state.emailValue,
-      password: this.state.confirmedPasswordValue,
-      displayName: this.state.displayNameValue
+      email: emailValue,
+      password: passwordValue,
+      displayName: displayNameValue
     });
   }
 
   render() {
+    const { emailValue, displayNameValue } = this.state;
     return (
       <div>
         <h2>Registration</h2>
         <EmailInput
-          emailValue={this.state.emailValue}
-          onEmailChange={this.onEmailChange}
-          styles={{
-            inputField: { width: "150px" }
-          }}
+          value={emailValue}
+          onChange={this.onEmailChange}
         />
         <br />
         <PasswordInput
           showConfirm={true}
-          onConfirmedPasswordChange={this.onConfirmedPasswordChange}
+          onChange={this.onPasswordChange}
         />
         <br />
         <DisplayNameInput
-          displayNameValue={this.state.displayNameValue}
-          onDisplayNameChange={this.onDisplayNameChange}
+          value={displayNameValue}
+          onChange={this.onDisplayNameChange}
         />
         <br />
-        <button onClick={this.handleRegister}>Register</button>
+        <button onClick={this.onRegister}>Register</button>
       </div>
     );
   }

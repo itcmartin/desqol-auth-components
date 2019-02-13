@@ -1,21 +1,22 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 class PasswordInput extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      passwordValue: "",
-      confirmValue: "",
+      passwordValue: '',
+      confirmValue: '',
       isTheSame: true
     };
 
-    this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleChangeConfirm = this.handleChangeConfirm.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeConfirm = this.onChangeConfirm.bind(this);
     this.bubbleUpIfSame = this.bubbleUpIfSame.bind(this);
   }
 
-  handleChangePassword(e) {
+  onChangePassword(e) {
     const value = e.target.value;
     this.setState(
       prevState => ({
@@ -26,7 +27,7 @@ class PasswordInput extends React.Component {
     );
   }
 
-  handleChangeConfirm(e) {
+  onChangeConfirm(e) {
     const value = e.target.value;
     this.setState(
       prevState => ({
@@ -38,33 +39,35 @@ class PasswordInput extends React.Component {
   }
 
   bubbleUpIfSame() {
-    if (this.state.isTheSame || !this.props.showConfirm) {
-      this.props.onConfirmedPasswordChange(this.state.passwordValue);
+    const { isTheSame,  passwordValue} = this.state;
+    if (isTheSame || !this.props.showConfirm) {
+      this.props.onChange(passwordValue);
     } else {
-      this.props.onConfirmedPasswordChange("");
+      this.props.onChange('');
     }
   }
 
   render() {
+    const { passwordValue, confirmValue, isTheSame } = this.state;
     return (
       <div>
         Password: &nbsp;
         <input
-          type="password"
-          value={this.state.passwordValue}
-          onChange={this.handleChangePassword}
+          type='password'
+          value={passwordValue}
+          onChange={this.onChangePassword}
         />
         <br />
         {this.props.showConfirm && (
           <Fragment>
             Confirm: &nbsp;
             <input
-              type="password"
-              value={this.state.confirmValue}
-              onChange={this.handleChangeConfirm}
+              type='password'
+              value={confirmValue}
+              onChange={this.onChangeConfirm}
             />
             <br />
-            {this.state.isTheSame ? "ok" : "not okay"}
+            {isTheSame ? 'okay' : 'not okay'}
           </Fragment>
         )}
       </div>

@@ -1,18 +1,15 @@
-import React from "react";
-
-const localStyles = {
-  inputField: {}
-};
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class EmailInput extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  handleChange(e) {
-    this.props.onEmailChange(e);
+  onChange(e) {
+    this.props.onChange(e.target.value);
   }
 
   render() {
@@ -20,23 +17,23 @@ class EmailInput extends React.Component {
       <div>
         Email: &nbsp;
         <input
-          style={Object.assign(
-            {},
-            localStyles.inputField,
-            this.props.styles.inputField
-          )}
-          type="text"
-          placeholder="Your email address"
-          value={this.props.emailValue}
-          onChange={this.handleChange}
+          type='text'
+          placeholder='Your email address'
+          value={this.props.value}
+          onChange={this.onChange}
         />
       </div>
     );
   }
 }
 
+EmailInput.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
 EmailInput.defaultProps = {
-  styles: {}
+  value: ''
 };
 
 export default EmailInput;

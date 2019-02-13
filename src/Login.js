@@ -1,59 +1,69 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import EmailInput from "./EmailInput";
-import PasswordInput from "./PasswordInput";
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      emailValue: "",
-      confirmedPasswordValue: ""
+      emailValue: '',
+      passwordValue: ''
     };
 
     this.onEmailChange = this.onEmailChange.bind(this);
-    this.onConfirmedPasswordChange = this.onConfirmedPasswordChange.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onLogin = this.onLogin.bind(this);
   }
 
-  onEmailChange(e) {
+  onEmailChange(value) {
     this.setState({
-      emailValue: e.target.value
+      emailValue: value
     });
   }
 
-  onConfirmedPasswordChange(password) {
+  onPasswordChange(password) {
     this.setState({
-      confirmedPasswordValue: password
+      passwordValue: password
     });
   }
 
-  handleLogin() {
+  onLogin() {
+    const { emailValue, passwordValue } = this.state;
     this.props.onLogin({
-      email: this.state.emailValue,
-      password: this.state.confirmedPasswordValue
+      email: emailValue,
+      password: passwordValue
     });
   }
 
   render() {
+    const { emailValue } = this.state;
     return (
       <div>
         <h2>Login</h2>
         <EmailInput
-          emailValue={this.state.emailValue}
-          onEmailChange={this.onEmailChange}
+          value={emailValue}
+          onChange={this.onEmailChange}
         />
         <br />
         <PasswordInput
           showConfirm={false}
-          onConfirmedPasswordChange={this.onConfirmedPasswordChange}
+          onChange={this.onPasswordChange}
         />
         <br />
-        <button onClick={this.handleLogin}>Login</button>
+        <button onClick={this.onLogin}>Login</button>
       </div>
     );
   }
 }
+
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired
+};
+
+Login.defaultProps = {
+};
 
 export default Login;

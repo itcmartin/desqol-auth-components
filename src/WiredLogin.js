@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Login from "./Login";
+import Login from './Login';
 
-const API = "http://localhost:4000/api";
+const API = 'http://localhost:4000/api';
 
 const FETCH_CONFIG = {
-  mode: "cors",
-  cache: "no-cache",
+  mode: 'cors',
+  cache: 'no-cache',
   headers: {
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   }
 };
 
@@ -19,45 +19,43 @@ class WiredLogin extends React.Component {
 
     this.state = {};
 
-    this.handleLogin = this.handleLogin.bind(this);
+    this.onLogin = this.onLogin.bind(this);
   }
 
-  handleLogin(e) {
-    //alert(JSON.stringify(e));
-
+  onLogin(e) {
     fetch(
-      API + "/login",
+      API + '/login',
       Object.assign(FETCH_CONFIG, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(e)
       })
     )
-      .then(response => {
-        if (response.status === 200) {
-          response.json().then(this.props.successHandler);
-        } else {
-          response.json().then(this.props.failureHandler);
-        }
-      })
-      .catch(error => {
-        this.props.errorHandler(error);
-      });
+    .then(response => {
+      if (response.status === 200) {
+        response.json().then(this.props.onSuccess);
+      } else {
+        response.json().then(this.props.onFailure);
+      }
+    })
+    .catch(error => {
+      this.props.onError(error);
+    });
   }
 
   render() {
-    return <Login onLogin={this.handleLogin} />;
+    return <Login onLogin={this.onLogin} />;
   }
 }
 
 WiredLogin.propTypes = {
-  successHandler: PropTypes.func.isRequired,
-  failureHandler: PropTypes.func.isRequired,
-  errorHandler: PropTypes.func.isRequired
+  onSuccess: PropTypes.func.isRequired,
+  onFailure: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired
 };
 
 WiredLogin.defaultProps = {
-  errorHandler: e => {
-    alert("This is the default handler:" + JSON.stringify(e));
+  onError: e => {
+    alert('An error occurred:' + JSON.stringify(e));
   }
 };
 

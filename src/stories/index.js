@@ -13,6 +13,7 @@ import PasswordInput from '../PasswordInput'
 import DisplayNameInput from '../DisplayNameInput'
 import Button from "../Button";
 import Image from "../Image";
+import BellSFX from "../BellSFX";
 
 storiesOf('Registration', module).add('default', () =>
   <Registration onRegister={action('register')} />);
@@ -43,3 +44,6 @@ storiesOf('Button', module).add('Button', () =>
 
 storiesOf('Image', module).add('Image', () =>
     <Image onRegister={action('Image')} />);
+
+storiesOf('SFX', module).add('Desk bell', () =>
+    <BellSFX onRegister={action('BellSFX')} />);

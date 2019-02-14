@@ -7,6 +7,7 @@ import Logout from './Logout';
 import Profile from './Profile';
 
 import './styles.css';
+import Image from "./Image";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
       <Profile />
       <hr />
       <Logout />
+
+      <hr/>
+
+      <Image/>
     </div>
   );
 }

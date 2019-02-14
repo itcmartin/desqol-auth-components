@@ -12,6 +12,7 @@ import EmailInput from '../EmailInput'
 import PasswordInput from '../PasswordInput'
 import DisplayNameInput from '../DisplayNameInput'
 import Button from "../Button";
+import Image from "../Image";
 
 storiesOf('Registration', module).add('default', () =>
   <Registration onRegister={action('register')} />);
@@ -39,3 +40,6 @@ storiesOf('DisplayNameInput', module).add('default', () =>
 
 storiesOf('Button', module).add('Button', () =>
     <Button onRegister={action('Button')} />);
+
+storiesOf('Image', module).add('Image', () =>
+    <Image onRegister={action('Image')} />);

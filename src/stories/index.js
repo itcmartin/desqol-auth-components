@@ -11,6 +11,7 @@ import Logout from '../Logout'
 import EmailInput from '../EmailInput'
 import PasswordInput from '../PasswordInput'
 import DisplayNameInput from '../DisplayNameInput'
+import Button from "../Button";
 
 storiesOf('Registration', module).add('default', () =>
   <Registration onRegister={action('register')} />);
@@ -35,3 +36,6 @@ storiesOf('PasswordInput', module)
 
 storiesOf('DisplayNameInput', module).add('default', () =>
   <DisplayNameInput onChange={action('change')} />);
+
+storiesOf('Button', module).add('Button', () =>
+    <Button onRegister={action('Button')} />);

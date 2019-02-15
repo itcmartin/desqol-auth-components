@@ -11,6 +11,7 @@ import Logout from '../Logout'
 import EmailInput from '../EmailInput'
 import PasswordInput from '../PasswordInput'
 import DisplayNameInput from '../DisplayNameInput'
+import Pineapple from '../Pineapple'
 
 storiesOf('Registration', module).add('default', () =>
   <Registration onRegister={action('register')} />);
@@ -35,3 +36,12 @@ storiesOf('PasswordInput', module)
 
 storiesOf('DisplayNameInput', module).add('default', () =>
   <DisplayNameInput onChange={action('change')} />);
+
+storiesOf('Pineapple', module)
+	.add('01', () => <Pineapple  />)
+	.add('02', () => <Pineapple emotion="02" />)
+	.add('03', () => <Pineapple emotion="03" />)
+	.add('04', () => <Pineapple emotion="04" />)
+	.add('05', () => <Pineapple emotion="06" />)
+	.add('06', () => <Pineapple emotion="07" />)
+	

@@ -12,6 +12,8 @@ import EmailInput from '../EmailInput'
 import PasswordInput from '../PasswordInput'
 import DisplayNameInput from '../DisplayNameInput'
 import ProgressBar from '../ProgressBar'
+import Image from "../Image";
+import BellSFX from "../BellSFX";
 
 storiesOf('Registration', module).add('default', () =>
   <Registration onRegister={action('register')} />);
@@ -39,3 +41,9 @@ storiesOf('DisplayNameInput', module).add('default', () =>
 
 storiesOf('ProgressBar', module).add('default', () =>
   <ProgressBar progress={70} />);
+
+storiesOf('Image', module).add('Image', () =>
+    <Image onRegister={action('Image')} />);
+
+storiesOf('SFX', module).add('Desk bell', () =>
+    <BellSFX onRegister={action('BellSFX')} />);

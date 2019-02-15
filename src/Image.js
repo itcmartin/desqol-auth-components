@@ -14,7 +14,7 @@ class Image extends React.Component {
         return (
             <div>
                 <h1>Image</h1>
-                <img src={photo} />
+                <img src={photo}></img>
             </div>
         );
     }

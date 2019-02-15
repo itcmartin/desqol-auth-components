@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -45,5 +45,11 @@ storiesOf('ProgressBar', module).add('default', () =>
 storiesOf('Image', module).add('Image', () =>
     <Image onRegister={action('Image')} />);
 
+function iNeedABellNow() {
+}
+
 storiesOf('SFX', module).add('Desk bell', () =>
-    <BellSFX onRegister={action('BellSFX')} />);
+    <Fragment>
+      <button onClick={(e) => iNeedABellNow() } />
+      <BellSFX playDeskBell={iNeedABellNow} />
+    </Fragment>);

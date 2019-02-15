@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Sound from "react-sound";
-import soundfile from "./SFX/deskBell.mp3";
+import soundfile from "./sounds/deskBell.mp3";
 
 /*
 This component can be used for notification. It imports a .mp3 file located in the SFX folder of this project.

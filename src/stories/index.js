@@ -15,6 +15,7 @@ import ProgressBar from '../ProgressBar'
 import Image from "../Image";
 import BellSFX from "../BellSFX";
 import Pineapple from '../Pineapple'
+import SelectSymptoms from '../SelectSymptoms'
 
 storiesOf('Registration', module).add('default', () =>
   <Registration onRegister={action('register')} />);
@@ -46,7 +47,7 @@ storiesOf('ProgressBar', module).add('default', () =>
 storiesOf('Image', module).add('Image', () =>
     <Image onRegister={action('Image')} />);
 
-storiesOf('SFX', module).add('Desk bell', () =>
+storiesOf('BellSFX', module).add('default', () =>
     <BellSFX />);
 
 storiesOf('Pineapple', module)
@@ -56,3 +57,6 @@ storiesOf('Pineapple', module)
 	.add('04', () => <Pineapple emotion="04" />)
 	.add('05', () => <Pineapple emotion="06" />)
 	.add('06', () => <Pineapple emotion="07" />)
+
+storiesOf('SelectSymptoms', module).add('default', () =>
+    <SelectSymptoms />);

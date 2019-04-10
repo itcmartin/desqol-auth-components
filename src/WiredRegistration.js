@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Registration from './Registration';
 
-const API = 'http://localhost:4000/api';
+const API = 'http://jira.itcarlow.ie/desqol-auth/api';
 
 const FETCH_CONFIG = {
   mode: 'cors',
@@ -47,13 +47,13 @@ class WiredRegistration extends React.Component {
   }
 }
 
-WiredLogin.propTypes = {
+WiredRegistration.propTypes = {
   onSuccess: PropTypes.func.isRequired,
   onFailure: PropTypes.func.isRequired,
   onError: PropTypes.func.isRequired
 };
 
-WiredLogin.defaultProps = {
+WiredRegistration.defaultProps = {
   onError: e => {
     alert('An error occurred:' + JSON.stringify(e));
   }

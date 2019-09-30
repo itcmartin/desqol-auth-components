@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Login from './Login';
 
-const API = 'http://jira.itcarlow.ie/desqol-auth/api';
+const API = 'http://localhost:4000/api';
 
 const FETCH_CONFIG = {
   mode: 'cors',
